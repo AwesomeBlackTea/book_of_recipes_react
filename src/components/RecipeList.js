@@ -15,24 +15,28 @@ function RecipeList() {
     axios
       .get(apiUrl)
       .then((response) => {
-        console.log(response.data);
         setRecipes(response.data);
         setLoading(false);
       })
       .catch((error) => {
-        console.error(error);
-        setError('Error fetching recipes');
+        setError('Error fetching recipes with: ', error);
         setLoading(false);
       });
   }, []);
 
   if (loading) {
+    console.log('Loading...');
+  
     return <div>Loading...</div>;
   }
 
   if (error) {
+    console.error('Error: ', error);
+  
     return <div>{error}</div>;
   }
+
+  console.log('Success with recipes: ', recipes);
 
   return (
     <div>

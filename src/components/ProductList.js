@@ -19,18 +19,24 @@ function ProductList() {
         setLoading(false);
       })
       .catch((error) => {
-        setError('Error fetching products');
+        setError('Error fetching products with: ', error);
         setLoading(false);
       });
   }, []);
 
   if (loading) {
+    console.log('Loading...');
+  
     return <div>Loading...</div>;
   }
 
   if (error) {
+    console.error('Error: ', error);
+  
     return <div>{error}</div>;
   }
+
+  console.log('Success with products: ', products);
 
   return (
     <div>
