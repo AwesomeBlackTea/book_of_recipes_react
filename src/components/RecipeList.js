@@ -26,13 +26,13 @@ function RecipeList() {
 
   if (loading) {
     console.log('Loading...');
-  
+
     return <div>Loading...</div>;
   }
 
   if (error) {
     console.error('Error: ', error);
-  
+
     return <div>{error}</div>;
   }
 
@@ -45,6 +45,9 @@ function RecipeList() {
         {recipes.map((recipe) => (
           <li key={recipe.id}>
             <h2>{recipe.title}</h2>
+            <h2>{recipe.types}</h2>
+            <h2>{recipe.description}</h2>
+            <h2>{recipe.video_url}</h2>
             {/* Add more recipe details as needed */}
           </li>
         ))}

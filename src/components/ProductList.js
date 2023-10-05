@@ -26,13 +26,13 @@ function ProductList() {
 
   if (loading) {
     console.log('Loading...');
-  
+
     return <div>Loading...</div>;
   }
 
   if (error) {
     console.error('Error: ', error);
-  
+
     return <div>{error}</div>;
   }
 
@@ -45,6 +45,8 @@ function ProductList() {
         {products.map((product) => (
           <li key={product.id}>
             <h2>{product.title}</h2>
+            <h2>{product.types}</h2>
+            <h2>{product.description}</h2>
             {/* Add more product details as needed */}
           </li>
         ))}
