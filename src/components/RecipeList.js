@@ -1,4 +1,5 @@
 // src/components/RecipeList.js
+import '../RecipeList.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -39,16 +40,18 @@ function RecipeList() {
   console.log('Success with recipes: ', recipes);
 
   return (
-    <div>
-      <h1>Recipe List</h1>
-      <ul>
+    <div className="recipe-list-container">
+      <h1 className="recipe-list-title">Delicious Recipes</h1>
+      <ul className="recipe-list">
         {recipes.map((recipe) => (
-          <li key={recipe.id}>
-            <h2>{recipe.title}</h2>
-            <h2>{recipe.types}</h2>
-            <h2>{recipe.description}</h2>
-            <h2>{recipe.video_url}</h2>
-            {/* Add more recipe details as needed */}
+          <li className="recipe-item" key={recipe.id}>
+            <div className="recipe-item-header">
+              <h2 className="recipe-title">{recipe.title}</h2>
+            </div>
+            <p className="recipe-types">{recipe.types}</p>
+            <p className="recipe-video-url">{recipe.video_url}</p>
+            <p className="recipe-description">{recipe.description}</p>
+            <button className="view-details-button">View Details</button>
           </li>
         ))}
       </ul>
