@@ -2,6 +2,7 @@
 import '../ItemList.css';
 import '../RecipeList.css';
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function RecipeList() {
@@ -43,6 +44,7 @@ function RecipeList() {
   return (
     <div className="list-container">
       <h1 className="list-title">Delicious Recipes</h1>
+
       <ul className="list">
         {recipes.map((recipe) => (
           <li className="item" key={recipe.id}>
@@ -60,9 +62,13 @@ function RecipeList() {
           </li>
         ))}
       </ul>
+
       <div className="button-container">
         <button className="action-button">Create Recipe</button>
         <button className="action-button">Add Recipe</button>
+        <Link to="/product-list">
+          <button className="action-button">Products List</button>
+        </Link>
         <button className="action-button">More...</button>
       </div>
     </div>
