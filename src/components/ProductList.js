@@ -1,5 +1,8 @@
 // src/components/ProductList.js
+import '../ItemList.css';
+import '../ProductList.css';
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function ProductList() {
@@ -39,18 +42,33 @@ function ProductList() {
   console.log('Success with products: ', products);
 
   return (
-    <div>
-      <h1>Product List</h1>
-      <ul>
+    <div className="list-container">
+      <h1 className="list-title">Products</h1>
+
+      <ul className="list">
         {products.map((product) => (
-          <li key={product.id}>
-            <h2>{product.title}</h2>
-            <h2>{product.types}</h2>
-            <h2>{product.description}</h2>
-            {/* Add more product details as needed */}
+          <li className="item" key={product.id}>
+            <div className="item-header">
+              <h2 className="product-name">{product.name}</h2>
+            </div>
+            <p className="product-types">
+              {product.types.map((type)=> (
+                type + ' '
+              ))}
+            </p>
+            <p className="product-description">{product.description}</p>
+            <button className="view-details-button">View Details</button>
           </li>
         ))}
       </ul>
+
+      <div className="button-container">
+        <button className="action-button">Create Product</button>
+        <Link to="/">
+          <button className="action-button">Recipe List</button>
+        </Link>
+        <button className="action-button">More...</button>
+      </div>
     </div>
   );
 }
