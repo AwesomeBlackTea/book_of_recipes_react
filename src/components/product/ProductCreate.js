@@ -35,11 +35,15 @@ function ProductCreate() {
       .post('http://localhost:3000/products', formData)
       .then((response) => {
         setLoading(false);
+
         console.log('Product created successfully:', response.data);
+
+        //redirecting to show page
       })
       .catch((error) => {
         setLoading(false);
         setError('Error creating product: ' + error);
+
         console.error('Error creating product:', error);
       });
   };

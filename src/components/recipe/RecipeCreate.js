@@ -41,6 +41,8 @@ function RecipeCreate() {
         setLoading(false);
 
         console.log('Recipe created successfully:', response.data);
+
+        //redirecting to show page
       })
       .catch((error) => {
         setLoading(false);

@@ -42,6 +42,8 @@ function ProductUpdate() {
       .put(`http://localhost:3000/products/${id}`, formData)
       .then(() => {
         console.log('Product updated successfully')
+
+        //redirecting to show page
       })
       .catch((error) => {
         setError('Error updating product with: ', error);

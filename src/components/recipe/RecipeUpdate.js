@@ -42,6 +42,8 @@ function RecipeUpdate() {
       .put(`http://localhost:3000/recipes/${id}`, formData)
       .then(() => {
         console.log('Recipe updated successfully')
+
+        // redirecting to show page
       })
       .catch((error) => {
         setError('Error updating recipe with: ', error);
