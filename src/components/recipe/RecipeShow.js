@@ -61,7 +61,9 @@ function RecipeShow() {
         <Link to="/">
           <button className="action-button">All Recipes</button>
         </Link>
-        <button className="action-button">Update Recipe</button>
+        <Link to={`/recipes/${id}/update`}>
+          <button className="action-button">Update Recipe</button>
+        </Link>
         <Link to={`/recipes/${id}/delete`}>
           <button className="delete-button">Delete Recipe</button>
         </Link>

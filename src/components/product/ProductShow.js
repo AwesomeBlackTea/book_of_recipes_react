@@ -56,7 +56,9 @@ function ProductShow() {
         <Link to="/products">
           <button className="action-button">All Products</button>
         </Link>
-        <button className="action-button">Update Product</button>
+        <Link to={`/products/${id}/update`}>
+          <button className="action-button">Update Product</button>
+        </Link>
         <Link to={`/products/${id}/delete`}>
           <button className="delete-button">Delete Product</button>
         </Link>
