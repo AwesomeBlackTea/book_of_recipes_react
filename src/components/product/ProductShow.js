@@ -1,4 +1,5 @@
 import '../ItemList.css';
+import '../Show.css' ;
 import './Product.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -17,13 +18,13 @@ function ProductShow() {
         setProduct(response.data);
         setLoading(false);
 
-        console.log('show is called successfull')
+        console.log('Product shown successfully')
       })
       .catch(error => {
-        setError('Error fetching products with: ', error);
+        setError('Error fetching product with: ', error);
         setLoading(false);
 
-        console.log('show is called with error')
+        console.log('Error showing product')
       });
   }, [id]);
 
@@ -42,7 +43,7 @@ function ProductShow() {
   return (
     <div className="show-view">
       <div className="show-header">
-        <h2 className="product-title">{product.title}</h2>
+        <h2 className="product-name">{product.name}</h2>
         <p className="product-types">
           {product.types.map((type) => type + ' ')}
         </p>
@@ -56,7 +57,9 @@ function ProductShow() {
           <button className="action-button">All Products</button>
         </Link>
         <button className="action-button">Update Product</button>
-        <button className="delete-button">Delete Product</button>
+        <Link to={`/products/${id}/delete`}>
+          <button className="delete-button">Delete Product</button>
+        </Link>
       </div>
     </div>
   );

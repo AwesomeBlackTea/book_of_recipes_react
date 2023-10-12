@@ -3,8 +3,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css';
 import RecipeList from './components/recipe/RecipeList';
 import RecipeShow from './components/recipe/RecipeShow';
+import RecipeCreate from './components/recipe/RecipeCreate';
+import RecipeDestroy from './components/recipe/RecipeDestroy';
 import ProductList from './components/product/ProductList';
 import ProductShow from './components/product/ProductShow';
+import ProductCreate from './components/product/ProductCreate';
+import ProductDestroy from './components/product/ProductDestroy';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -23,9 +27,14 @@ root.render(
       <main className="main-content">
         <Routes>
           <Route path="/" element={<RecipeList />} />
-          <Route path="products" element={<ProductList />} />
           <Route path='/recipes/:id' element={<RecipeShow />} />
+          <Route path="/recipes/create" element={<RecipeCreate />} />
+          <Route path="/recipes/:id/delete" element={<RecipeDestroy />} />
+
+          <Route path="products" element={<ProductList />} />
           <Route path='/products/:id' element={<ProductShow />} />
+          <Route path="/products/create" element={<ProductCreate />} />
+          <Route path="/products/:id/delete" element={<ProductDestroy />} />
         </Routes>
       </main>
     </div>

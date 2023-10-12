@@ -20,7 +20,7 @@ function ProductList() {
         setProducts(response.data);
         setLoading(false);
 
-        console.log('index is called successfull')
+        console.log('index is called successfully')
       })
       .catch((error) => {
         setError('Error fetching products with: ', error);
@@ -57,13 +57,17 @@ function ProductList() {
                 type + ' '
               ))}
             </p>
-            <button className="view-details-button">View Details</button>
+            <Link to={`/products/${product.id}`}>
+              <button className="view-details-button">View Details</button>
+            </Link>
           </li>
         ))}
       </ul>
 
       <div className="button-container">
-        <button className="action-button">Create Product</button>
+        <Link to="/products/create">
+          <button className="action-button">Create Product</button>
+        </Link>
         <Link to="/">
           <button className="action-button">All Recipes</button>
         </Link>

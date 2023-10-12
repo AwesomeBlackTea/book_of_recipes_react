@@ -1,6 +1,5 @@
 // src/components/RecipeList.js
 import '../ItemList.css';
-import '../Show.css'
 import './Recipe.css';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -20,7 +19,7 @@ function RecipeList() {
         setRecipes(response.data);
         setLoading(false);
 
-        console.log('index is called successfull')
+        console.log('index is called successfully')
       })
       .catch((error) => {
         setError('Error fetching recipes with: ', error);
@@ -65,8 +64,11 @@ function RecipeList() {
       </ul>
 
       <div className="button-container">
-        <button className="action-button">Create Recipe</button>
-        <button className="action-button">Add Recipe</button>
+        <Link to="/recipes/create">
+          <button className="action-button">Create Recipe</button>
+        </Link>
+        {/* <button className="action-button">Add Recipe</button> */}
+        {/* <button className="action-button">View All Recipe Requests</button> */}
         <Link to="/products">
           <button className="action-button">All Products</button>
         </Link>

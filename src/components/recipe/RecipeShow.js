@@ -1,5 +1,6 @@
 import '../ItemList.css';
 import './Recipe.css';
+import '../Show.css' ;
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
@@ -17,13 +18,13 @@ function RecipeShow() {
         setRecipe(response.data);
         setLoading(false);
 
-        console.log('show is called successfull')
+        console.log('Recipe shown successfully')
       })
       .catch(error => {
-        setError('Error fetching recipes with: ', error);
+        setError('Error fetching recipe with: ', error);
         setLoading(false);
 
-        console.log('show is called with error')
+        console.log('Error showing recipe')
       });
   }, [id]);
 
@@ -61,7 +62,9 @@ function RecipeShow() {
           <button className="action-button">All Recipes</button>
         </Link>
         <button className="action-button">Update Recipe</button>
-        <button className="delete-button">Delete Recipe</button>
+        <Link to={`/recipes/${id}/delete`}>
+          <button className="delete-button">Delete Recipe</button>
+        </Link>
       </div>
     </div>
   );
