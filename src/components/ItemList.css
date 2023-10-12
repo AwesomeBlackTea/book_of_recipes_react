@@ -1,11 +1,11 @@
-/* RecipeList.css */
+/* components/ItemList.css */
 
 .list-container {
   text-align: center;
   padding: 20px;
 }
 
-.header {
+.list-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -43,7 +43,7 @@
   padding: 0;
 }
 
-.item {
+.list-item {
   border: 1px solid #ddd;
   margin: 10px 0;
   padding: 15px;
