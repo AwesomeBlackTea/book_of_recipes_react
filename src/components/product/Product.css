@@ -1,16 +1,19 @@
-/* RecipeList.css */
+/* components/product/Product.css */
 .product-name {
-  font-size: 20px;
+  font-size: 24px;
   margin: 0;
   color: #333;
+  margin: 0
 }
 
 .product-types {
   font-size: 16px;
   color: #555;
+  margin: 5px 0;
 }
 
 .product-description {
-  font-size: 16px;
+  font-size: 18px;
+  line-height: 1.6;
   color: #555;
 }

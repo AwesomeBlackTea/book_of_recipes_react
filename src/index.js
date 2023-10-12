@@ -1,8 +1,10 @@
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css';
-import RecipeList from './components/RecipeList';
-import ProductList from './components/ProductList';
+import RecipeList from './components/recipe/RecipeList';
+import RecipeShow from './components/recipe/RecipeShow';
+import ProductList from './components/product/ProductList';
+import ProductShow from './components/product/ProductShow';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -21,7 +23,9 @@ root.render(
       <main className="main-content">
         <Routes>
           <Route path="/" element={<RecipeList />} />
-          <Route path="product-list" element={<ProductList />} />
+          <Route path="products" element={<ProductList />} />
+          <Route path='/recipes/:id' element={<RecipeShow />} />
+          <Route path='/products/:id' element={<ProductShow />} />
         </Routes>
       </main>
     </div>
