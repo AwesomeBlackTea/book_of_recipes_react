@@ -44,9 +44,6 @@ function RecipeShow() {
     <div className="show-view">
       <div className="show-header">
         <h2 className="recipe-title">{recipe.title}</h2>
-        <p className="recipe-types">
-          {recipe.types.map((type) => type + ' ')}
-        </p>
       </div>
       <div className="show-details">
         <p className="recipe-video-url">

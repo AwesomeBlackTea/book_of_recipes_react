@@ -69,10 +69,6 @@ function RecipeUpdate() {
           <input type="text" id="title" name="title" value={formData.title} onChange={handleInputChange} />
         </div>
         <div>
-          <label htmlFor="types">Types (comma-separated):</label>
-          <input type="text" id="types" name="types" value={formData.types.join(', ')} onChange={handleInputChange} />
-        </div>
-        <div>
           <label htmlFor="video_url">Video URL:</label>
           <input type="text" id="video_url" name="video_url" value={formData.video_url} onChange={handleInputChange} />
         </div>
