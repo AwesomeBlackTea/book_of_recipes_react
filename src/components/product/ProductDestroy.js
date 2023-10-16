@@ -1,3 +1,6 @@
+import '../ItemList.css';
+import './Product.css';
+import '../Show.css' ;
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
@@ -32,7 +35,17 @@ function ProductDestroy() {
   if (error) {
     console.error('Error: ', error);
 
-    return <div>{error}</div>;
+    return (
+      <div className="show-view">
+        <div className="show-details">
+          <p className="product-description">Product deleting failed with error: {error}.</p>
+        </div>
+
+        <Link to="/products">
+          <button className="action-button">All Products</button>
+        </Link>
+      </div>
+    );
   }
 
   return (

@@ -1,6 +1,7 @@
 // src/components/RecipeList.js
 import '../ItemList.css';
 import './Recipe.css';
+import '../Show.css' ;
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -38,7 +39,13 @@ function RecipeList() {
   if (error) {
     console.error('Error: ', error);
 
-    return <div>{error}</div>;
+    return (
+      <div className="show-view">
+        <div className="show-details">
+          <p className="recipe-description">Recipe list showing failed with error: {error}.</p>
+        </div>
+      </div>
+    );
   }
 
   return (

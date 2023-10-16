@@ -1,7 +1,7 @@
 // src/components/ProductList.js
 import '../ItemList.css';
-import '../Show.css'
 import './Product.css';
+import '../Show.css'
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -39,7 +39,13 @@ function ProductList() {
   if (error) {
     console.error('Error: ', error);
 
-    return <div>{error}</div>;
+    return (
+      <div className="show-view">
+        <div className="show-details">
+          <p className="product-description">Product list showing failed with error: {error}.</p>
+        </div>
+      </div>
+    );
   }
 
   return (
