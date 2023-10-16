@@ -1,5 +1,6 @@
 import React, { useState} from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function RecipeCreate() {
   const [formData, setFormData] = useState({
@@ -19,18 +20,6 @@ function RecipeCreate() {
     });
   };
 
-  const handleTypesChange = (e) => {
-    const { name, value } = e.target;
-
-    // Split the comma-separated values into an array and trim each value
-    const typesArray = value.split(',').map((type) => type.trim());
-
-    setFormData({
-      ...formData,
-      [name]: typesArray, // Update the "types" attribute with the array
-    });
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -40,6 +29,8 @@ function RecipeCreate() {
         setLoading(false);
 
         console.log('Recipe created successfully:', response.data);
+
+        //redirecting to show page
       })
       .catch((error) => {
         setLoading(false);
@@ -76,16 +67,6 @@ function RecipeCreate() {
           />
         </div>
         <div>
-          <label htmlFor="types">Types (comma-separated):</label>
-          <input
-            type="text"
-            id="types"
-            name="types"
-            value={formData.types.join(', ')}
-            onChange={handleTypesChange}
-          />
-        </div>
-        <div>
           <label htmlFor="video_url">Video URL:</label>
           <input
             type="text"
@@ -95,6 +76,16 @@ function RecipeCreate() {
             onChange={handleChange}
           />
         </div>
+        {/* <div>
+          <label htmlFor="product_ids">Products:</label>
+          <input
+            type="text"
+            id="product_ids"
+            name="product_ids"
+            value={formData.video_url}
+            onChange={handleChange}
+          />
+        </div> */}
         <div>
           <label htmlFor="description">Description:</label>
           <textarea

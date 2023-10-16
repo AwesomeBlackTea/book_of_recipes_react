@@ -44,9 +44,6 @@ function RecipeShow() {
     <div className="show-view">
       <div className="show-header">
         <h2 className="recipe-title">{recipe.title}</h2>
-        <p className="recipe-types">
-          {recipe.types.map((type) => type + ' ')}
-        </p>
       </div>
       <div className="show-details">
         <p className="recipe-video-url">
@@ -61,7 +58,9 @@ function RecipeShow() {
         <Link to="/">
           <button className="action-button">All Recipes</button>
         </Link>
-        <button className="action-button">Update Recipe</button>
+        <Link to={`/recipes/${id}/update`}>
+          <button className="action-button">Update Recipe</button>
+        </Link>
         <Link to={`/recipes/${id}/delete`}>
           <button className="delete-button">Delete Recipe</button>
         </Link>

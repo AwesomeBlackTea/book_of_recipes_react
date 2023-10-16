@@ -51,11 +51,6 @@ function RecipeList() {
             <div className="item-header">
               <h2 className="recipe-title">{recipe.title}</h2>
             </div>
-            <p className="recipe-types">
-              {recipe.types.map((type)=> (
-                type + ' '
-              ))}
-            </p>
             <Link to={`/recipes/${recipe.id}`}>
               <button className="view-details-button">View Details</button>
             </Link>
