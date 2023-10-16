@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 function RecipeUpdate() {
   const { id } = useParams();
@@ -12,6 +12,7 @@ function RecipeUpdate() {
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -43,7 +44,7 @@ function RecipeUpdate() {
       .then(() => {
         console.log('Recipe updated successfully')
 
-        // redirecting to show page
+        navigate(`/recipes/${id}`)
       })
       .catch((error) => {
         setError('Error updating recipe with: ', error);
@@ -54,10 +55,6 @@ function RecipeUpdate() {
 
   if (loading) {
     return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
   }
 
   return (
@@ -78,6 +75,7 @@ function RecipeUpdate() {
         </div>
         <button type="submit">Update Recipe</button>
       </form>
+      {error && <p className="error">{error}</p>}
     </div>
   );
 }

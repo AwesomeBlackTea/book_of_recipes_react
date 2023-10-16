@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 function ProductUpdate() {
   const { id } = useParams();
@@ -12,6 +12,7 @@ function ProductUpdate() {
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -35,6 +36,14 @@ function ProductUpdate() {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleTypesChange = (e) => {
+    const { value } = e.target;
+    setFormData({
+      ...formData,
+      types: value.split(',').map((type) => type.trim()),
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -43,7 +52,7 @@ function ProductUpdate() {
       .then(() => {
         console.log('Product updated successfully')
 
-        //redirecting to show page
+        navigate(`/products/${id}`)
       })
       .catch((error) => {
         setError('Error updating product with: ', error);
@@ -56,10 +65,6 @@ function ProductUpdate() {
     return <div>Loading...</div>;
   }
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
   return (
     <div>
       <h1>Update Product</h1>
@@ -70,7 +75,7 @@ function ProductUpdate() {
         </div>
         <div>
           <label htmlFor="types">Types (comma-separated):</label>
-          <input type="text" id="types" name="types" value={formData.types.join(', ')} onChange={handleInputChange} />
+          <input type="text" id="types" name="types" value={formData.types.join(', ')} onChange={handleTypesChange} />
         </div>
         <div>
           <label htmlFor="description">Description:</label>
@@ -78,6 +83,7 @@ function ProductUpdate() {
         </div>
         <button type="submit">Update Product</button>
       </form>
+      {error && <p className="error">{error}</p>}
     </div>
   );
 }
