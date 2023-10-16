@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function RecipeCreate() {
   const [formData, setFormData] = useState({
@@ -11,6 +11,7 @@ function RecipeCreate() {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,7 +31,7 @@ function RecipeCreate() {
 
         console.log('Recipe created successfully:', response.data);
 
-        //redirecting to show page
+        navigate(`/recipes/${response.data.id}`)
       })
       .catch((error) => {
         setLoading(false);
@@ -44,12 +45,6 @@ function RecipeCreate() {
     console.log('Loading...');
 
     return <div>Loading...</div>;
-  }
-
-  if (error) {
-    console.error('Error: ', error);
-
-    return <div>{error}</div>;
   }
 
   return (

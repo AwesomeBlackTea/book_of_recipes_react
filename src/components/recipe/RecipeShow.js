@@ -46,11 +46,12 @@ function RecipeShow() {
         <h2 className="recipe-title">{recipe.title}</h2>
       </div>
       <div className="show-details">
+        {recipe.video_url && (
         <p className="recipe-video-url">
           <a href={recipe.video_url} target="_blank" rel="noreferrer">
             Watch Video
           </a>
-        </p>
+        </p>)}
         <p className="recipe-description">{recipe.description}</p>
       </div>
 

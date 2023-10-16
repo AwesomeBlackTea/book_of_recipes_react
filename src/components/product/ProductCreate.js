@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function ProductCreate() {
   const [formData, setFormData] = useState({
@@ -11,6 +11,7 @@ function ProductCreate() {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,7 +22,7 @@ function ProductCreate() {
   };
 
   const handleTypesChange = (e) => {
-    const { name, value } = e.target;
+    const { value } = e.target;
     setFormData({
       ...formData,
       types: value.split(',').map((type) => type.trim()),
@@ -38,7 +39,7 @@ function ProductCreate() {
 
         console.log('Product created successfully:', response.data);
 
-        //redirecting to show page
+        navigate(`/products/${response.data.id}`)
       })
       .catch((error) => {
         setLoading(false);
@@ -52,12 +53,6 @@ function ProductCreate() {
     console.log('Loading...');
 
     return <div>Loading...</div>;
-  }
-
-  if (error) {
-    console.error('Error: ', error);
-
-    return <div>{error}</div>;
   }
 
   return (
