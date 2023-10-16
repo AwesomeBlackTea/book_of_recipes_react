@@ -37,7 +37,17 @@ function ProductShow() {
   if (error) {
     console.error('Error: ', error);
 
-    return <div>{error}</div>;
+    return (
+      <div className="show-view">
+        <div className="show-details">
+          <p className="product-description">Product showing failed with error: {error}.</p>
+        </div>
+
+        <Link to="/products">
+          <button className="action-button">All Products</button>
+        </Link>
+      </div>
+    );
   }
 
   return (

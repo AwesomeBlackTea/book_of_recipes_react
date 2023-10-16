@@ -37,7 +37,17 @@ function RecipeShow() {
   if (error) {
     console.error('Error: ', error);
 
-    return <div>{error}</div>;
+    return (
+      <div className="show-view">
+        <div className="show-details">
+          <p className="recipe-description">Recipe showing failed with error: {error}.</p>
+        </div>
+
+        <Link to="/">
+          <button className="action-button">All Recipes</button>
+        </Link>
+      </div>
+    );
   }
 
   return (
